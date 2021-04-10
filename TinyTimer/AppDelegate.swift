@@ -10,43 +10,45 @@ import SwiftUI
 
 var highlighted = false
 var statusBarItem: NSStatusItem!
+var popover: NSPopover!
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    var popover: NSPopover!
     var positioningView: NSView!
     var popoverDelegate: NSPopoverDelegate!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
         
         // Create the popover that'll show the window contents
-        self.popover = NSPopover()
-        self.popover.contentSize = NSSize(width: 200, height: 200)
-        self.popover.contentViewController = NSHostingController(rootView: contentView)
-        self.popover.behavior = .transient
+        popover = NSPopover()
+        popover.contentSize = NSSize(width: 200, height: 200)
+        popover.contentViewController = NSHostingController(rootView: contentView)
+        popover.behavior = .transient
         
         // Register the popover delegate and assign it to the popover
         popoverDelegate = customDelegate()
-        self.popover.delegate = popoverDelegate
-
+        popover.delegate = popoverDelegate
+        
         // Initialize the status bar item
         statusBarItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
-                
+        
         // Configure the menu bar button
         let button = statusBarItem.button!
         button.image = NSImage(named: "Icon")
         button.action = #selector(togglePopover(_:))
         button.sendAction(on: .leftMouseDown)
         button.identifier = NSUserInterfaceItemIdentifier("statusButton")
+        
     }
     
     @objc func togglePopover(_ sender: AnyObject?) {
         
         // We only want behavior when the popover is closed
-        if !self.popover.isShown {
+        if !popover.isShown {
             // Fetch the button
             let button = statusBarItem.button!
             
@@ -57,14 +59,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.addSubview(positioningView)
 
             // Show the popover
-            self.popover.animates = false
-            self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-            self.popover.animates = true
+            popover.animates = false
+            popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+            popover.animates = true
 
             // Move the button bounds to cover the arrow
             button.bounds = button.bounds.offsetBy(dx: 0, dy: button.bounds.height)
             
-            if let popoverWindow = self.popover.contentViewController?.view.window {
+            if let popoverWindow = popover.contentViewController?.view.window {
                 // Move the popover up a bit and make it the active view
                 popoverWindow.setFrame(popoverWindow.frame.offsetBy(dx: 0, dy: 8), display: false)
                 popoverWindow.makeKey()
@@ -77,14 +79,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 class customDelegate: NSObject, NSPopoverDelegate {
     
+    // Reset the button when the popover prepares to close
     func popoverDidClose(_ notification: Notification) {
-        // Fetch the button
-        let button = statusBarItem.button!
         
-        // Remove the positioning view
-        button.subviews.first?.removeFromSuperview()
-        
+        // Remove the positioning view and reset the highlight
+        statusBarItem.button!.subviews.first?.removeFromSuperview()
         highlighted = false
+        
     }
     
 }
