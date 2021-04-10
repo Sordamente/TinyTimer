@@ -29,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.popover.behavior = .transient
         
         // Register the popover delegate and assign it to the popover
-        popoverDelegate = myPopoverDelegate()
+        popoverDelegate = customDelegate()
         self.popover.delegate = popoverDelegate
 
         // Initialize the status bar item
@@ -75,7 +75,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 }
 
-class myPopoverDelegate: NSObject, NSPopoverDelegate {
+class customDelegate: NSObject, NSPopoverDelegate {
     
     func popoverDidClose(_ notification: Notification) {
         // Fetch the button
