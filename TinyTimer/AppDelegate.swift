@@ -52,8 +52,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // Fetch the button
             let button = statusBarItem.button!
             
-            highlighted = true
-            
             // Add a positioning view to the button to hide the popover arrow
             let positioningView = NSView(frame: button.bounds)
             button.addSubview(positioningView)
@@ -71,6 +69,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 popoverWindow.setFrame(popoverWindow.frame.offsetBy(dx: 0, dy: 8), display: false)
                 popoverWindow.makeKey()
             }
+            
+            // Force the button to redraw
+            highlighted = true
+            button.updateCell(button.cell!)
         }
         
     }
@@ -81,11 +83,14 @@ class customDelegate: NSObject, NSPopoverDelegate {
     
     // Reset the button when the popover prepares to close
     func popoverDidClose(_ notification: Notification) {
+        let button = statusBarItem.button!
         
         // Remove the positioning view and reset the highlight
-        statusBarItem.button!.subviews.first?.removeFromSuperview()
+        button.subviews.first?.removeFromSuperview()
         highlighted = false
         
+        // Force the button to redraw
+        button.updateCell(button.cell!)
     }
     
 }
