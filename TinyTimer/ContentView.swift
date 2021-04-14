@@ -14,7 +14,7 @@ struct ContentView: View {
         VStack {
             Spacer()
             
-            Text(timertext.val)
+            TimerBlock(timertext.val)
             
             Spacer()
             
@@ -40,6 +40,20 @@ struct ContentView: View {
                 }
             }
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+struct TimerBlock: View {
+    var value = ""
+    
+    init(_ val: String) {
+        self.value = val
+    }
+    
+    var body: some View {
+        HStack {
+            Text(value)
+        }
     }
 }
 
