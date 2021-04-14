@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F13E6CAF26277BD10018F499 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = F13E6CAE26277BD10018F499 /* KeyboardShortcuts */; };
 		F19C36FF2620F230001B2D12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19C36FE2620F230001B2D12 /* AppDelegate.swift */; };
 		F19C37012620F230001B2D12 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19C37002620F230001B2D12 /* ContentView.swift */; };
 		F19C37032620F230001B2D12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F19C37022620F230001B2D12 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F13E6CAF26277BD10018F499 /* KeyboardShortcuts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +92,9 @@
 			dependencies = (
 			);
 			name = TinyTimer;
+			packageProductDependencies = (
+				F13E6CAE26277BD10018F499 /* KeyboardShortcuts */,
+			);
 			productName = TinyTimer;
 			productReference = F19C36FB2620F230001B2D12 /* TinyTimer.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +122,9 @@
 				Base,
 			);
 			mainGroup = F19C36F22620F230001B2D12;
+			packageReferences = (
+				F13E6CAD26277BD10018F499 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+			);
 			productRefGroup = F19C36FC2620F230001B2D12 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -295,7 +303,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tomer.TinyTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -319,7 +327,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tomer.TinyTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -348,6 +356,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F13E6CAD26277BD10018F499 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F13E6CAE26277BD10018F499 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F13E6CAD26277BD10018F499 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F19C36F32620F230001B2D12 /* Project object */;
 }

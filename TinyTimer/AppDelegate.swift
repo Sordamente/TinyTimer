@@ -25,8 +25,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Create the popover that'll show the window contents
         popover = NSPopover()
-        popover.contentSize = NSSize(width: 200, height: 200)
-        popover.contentViewController = NSHostingController(rootView: contentView)
+        popover.contentSize = NSSize(width: 200, height: 100)
+        popover.contentViewController = ContentViewController(rootView: contentView)
         popover.behavior = .transient
         
         // Register the popover delegate and assign it to the popover
@@ -49,13 +49,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // We only want behavior when the popover is closed
         if !popover.isShown {
+            
             // Fetch the button
             let button = statusBarItem.button!
             
             // Add a positioning view to the button to hide the popover arrow
             let positioningView = NSView(frame: button.bounds)
             button.addSubview(positioningView)
-
+            
             // Show the popover
             popover.animates = false
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
