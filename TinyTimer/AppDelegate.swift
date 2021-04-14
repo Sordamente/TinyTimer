@@ -7,6 +7,7 @@
 
 import Cocoa
 import SwiftUI
+import KeyboardShortcuts
 
 var highlighted = false
 var statusBarItem: NSStatusItem!
@@ -43,6 +44,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         button.sendAction(on: .leftMouseDown)
         button.identifier = NSUserInterfaceItemIdentifier("statusButton")
         
+        KeyboardShortcuts.onKeyUp(for: .toggleMenu) { [self] in
+            popover.isShown ? popover.performClose(nil) : togglePopover(nil)
+        }
     }
     
     @objc func togglePopover(_ sender: AnyObject?) {
