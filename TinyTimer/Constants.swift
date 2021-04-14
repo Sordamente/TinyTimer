@@ -7,6 +7,8 @@
 
 import KeyboardShortcuts
 
+let validInputs = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM. "
+
 extension KeyboardShortcuts.Name {
-    static let toggleMenu = Self("toggleMenu", default: .init(.z, modifiers: [.control, .shift]))
+    static let toggleMenu = Self("toggleMenu", default: .init(.z, modifiers: [.command, .shift]))
 }

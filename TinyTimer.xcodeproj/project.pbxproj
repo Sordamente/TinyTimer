@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F13E6CAF26277BD10018F499 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = F13E6CAE26277BD10018F499 /* KeyboardShortcuts */; };
 		F13E6CB226277D7D0018F499 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E6CB126277D7D0018F499 /* Constants.swift */; };
+		F13E6CB52627812A0018F499 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E6CB42627812A0018F499 /* ViewController.swift */; };
 		F19C36FF2620F230001B2D12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19C36FE2620F230001B2D12 /* AppDelegate.swift */; };
 		F19C37012620F230001B2D12 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19C37002620F230001B2D12 /* ContentView.swift */; };
 		F19C37032620F230001B2D12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F19C37022620F230001B2D12 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		F13E6CB126277D7D0018F499 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F13E6CB42627812A0018F499 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F19C36FB2620F230001B2D12 /* TinyTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F19C36FE2620F230001B2D12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F19C37002620F230001B2D12 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				F19C36FE2620F230001B2D12 /* AppDelegate.swift */,
 				F19C37002620F230001B2D12 /* ContentView.swift */,
 				F13E6CB126277D7D0018F499 /* Constants.swift */,
+				F13E6CB42627812A0018F499 /* ViewController.swift */,
 				F19C37022620F230001B2D12 /* Assets.xcassets */,
 				F19C37072620F230001B2D12 /* Main.storyboard */,
 				F19C370A2620F230001B2D12 /* Info.plist */,
@@ -157,6 +160,7 @@
 			files = (
 				F19C37012620F230001B2D12 /* ContentView.swift in Sources */,
 				F19C36FF2620F230001B2D12 /* AppDelegate.swift in Sources */,
+				F13E6CB52627812A0018F499 /* ViewController.swift in Sources */,
 				F13E6CB226277D7D0018F499 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
