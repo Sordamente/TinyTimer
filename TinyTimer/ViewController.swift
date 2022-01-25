@@ -42,7 +42,7 @@ class ContentViewController: NSHostingController<ContentView> {
 }
 
 class TimerText: ObservableObject {
-    @Published var val = "type something"
+    @Published var val = ""
     
     func parse() {
         

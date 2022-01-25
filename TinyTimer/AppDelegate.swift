@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Create the popover that'll show the window contents
         popover = NSPopover()
-        popover.contentSize = NSSize(width: 200, height: 100)
+        popover.contentSize = NSSize(width: 150, height: 80)
         popover.contentViewController = ContentViewController(rootView: contentView)
         popover.behavior = .transient
         
