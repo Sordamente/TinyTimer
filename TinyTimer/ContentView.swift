@@ -14,11 +14,25 @@ struct ContentView: View {
         VStack {
             Text(time).font(.largeTitle).padding(.all, 8).foregroundColor(time == "00:00:00" ? Color.gray : Color.white)
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(KeyEventHandling())
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+struct KeyEventHandling: NSViewRepresentable {
+    class KeyView: NSView {
+        override var acceptsFirstResponder: Bool { true }
+        override func keyDown(with event: NSEvent) {
+            print(">> key \(event.charactersIgnoringModifiers ?? "")")
+        }
     }
+
+    func makeNSView(context: Context) -> NSView {
+        let view = KeyView()
+        DispatchQueue.main.async { // wait till next event cycle
+            view.window?.makeFirstResponder(view)
+        }
+        return view
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {}
 }

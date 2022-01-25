@@ -7,7 +7,6 @@
 
 import Cocoa
 import SwiftUI
-import KeyboardShortcuts
 
 var highlighted = false
 var statusBarItem: NSStatusItem!
@@ -20,33 +19,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var popoverDelegate: NSPopoverDelegate!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
         
         // Create the popover that'll show the window contents
         popover = NSPopover()
         popover.contentSize = NSSize(width: 130, height: 40)
-        popover.contentViewController = ContentViewController(rootView: contentView)
+        popover.contentViewController = NSHostingController(rootView: contentView)
         popover.behavior = .transient
         
         // Register the popover delegate and assign it to the popover
         popoverDelegate = customDelegate()
         popover.delegate = popoverDelegate
-        
+                
         // Initialize the status bar item
         statusBarItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
-        
+
         // Configure the menu bar button
         let button = statusBarItem.button!
+        
+        // MARK: This errors for some reason
         button.image = NSImage(named: "Icon")
+        
         button.action = #selector(togglePopover(_:))
         button.sendAction(on: .leftMouseDown)
         button.identifier = NSUserInterfaceItemIdentifier("statusButton")
-        
-        KeyboardShortcuts.onKeyUp(for: .toggleMenu) { [self] in
-            popover.isShown ? popover.performClose(nil) : togglePopover(nil)
-        }
     }
     
     @objc func togglePopover(_ sender: AnyObject?) {
