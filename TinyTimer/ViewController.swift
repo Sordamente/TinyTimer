@@ -17,14 +17,15 @@ class ContentViewController: NSHostingController<ContentView> {
     }
     
     override func keyDown(with event: NSEvent) {
+        print("hi!")
         if (event.keyCode == 51) {
-            _ = rootView.timertext.val.popLast()
+            _ = rootView.time.popLast()
             
             return
         }
         
         if (validInputs.contains(event.characters!)) {
-            rootView.timertext.val += String(event.characters!)
+            rootView.time += String(event.characters!)
             
             return
         }
@@ -38,13 +39,5 @@ class ContentViewController: NSHostingController<ContentView> {
             
             return
         }
-    }
-}
-
-class TimerText: ObservableObject {
-    @Published var val = ""
-    
-    func parse() {
-        
     }
 }

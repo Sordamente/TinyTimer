@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Create the popover that'll show the window contents
         popover = NSPopover()
-        popover.contentSize = NSSize(width: 150, height: 80)
+        popover.contentSize = NSSize(width: 130, height: 40)
         popover.contentViewController = ContentViewController(rootView: contentView)
         popover.behavior = .transient
         
@@ -69,7 +69,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // Move the button bounds to cover the arrow
             button.bounds = button.bounds.offsetBy(dx: 0, dy: button.bounds.height)
             
-            if let popoverWindow = popover.contentViewController?.view.window {
+            if let popoverWindow = popover.contentViewController!.view.window {
                 // Move the popover up a bit and make it the active view
                 popoverWindow.setFrame(popoverWindow.frame.offsetBy(dx: 0, dy: 8), display: false)
                 popoverWindow.makeKey()
@@ -87,7 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 class customDelegate: NSObject, NSPopoverDelegate {
     
     // Reset the button when the popover prepares to close
-    func popoverDidClose(_ notification: Notification) {
+    func popoverWillClose(_ notification: Notification) {
         let button = statusBarItem.button!
         
         // Remove the positioning view and reset the highlight
