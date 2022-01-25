@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var time = "00:00:00"
+    @State private var time = "00:00:00"
     
     var body: some View {
         VStack {
@@ -16,12 +16,17 @@ struct ContentView: View {
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(KeyEventHandling())
     }
+    
+    func handleKey(key: String) {
+        time = key
+    }
 }
 
 struct KeyEventHandling: NSViewRepresentable {
     class KeyView: NSView {
         override var acceptsFirstResponder: Bool { true }
         override func keyDown(with event: NSEvent) {
+            contentView.handleKey(key: event.charactersIgnoringModifiers ?? "")
             print(">> key \(event.charactersIgnoringModifiers ?? "")")
         }
     }

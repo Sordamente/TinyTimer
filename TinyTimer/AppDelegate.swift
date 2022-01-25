@@ -10,6 +10,7 @@ import SwiftUI
 
 var highlighted = false
 var statusBarItem: NSStatusItem!
+let contentView = ContentView()
 var popover: NSPopover!
 
 @main
@@ -19,10 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var popoverDelegate: NSPopoverDelegate!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
-        
         // Create the popover that'll show the window contents
+        contentView.handleKey(key: "abc")
         popover = NSPopover()
         popover.contentSize = NSSize(width: 130, height: 40)
         popover.contentViewController = NSHostingController(rootView: contentView)
@@ -31,10 +30,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Register the popover delegate and assign it to the popover
         popoverDelegate = customDelegate()
         popover.delegate = popoverDelegate
-                
+        
         // Initialize the status bar item
         statusBarItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
-
+        
         // Configure the menu bar button
         let button = statusBarItem.button!
         
